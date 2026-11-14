@@ -6,7 +6,7 @@ export type ChatModel = 'toni-leicht' | 'toni-mittel' | 'toni-schwer' | (string 
 export interface ToniOptions {
   /** Schlüssel `km_live_…`. Standard: Umgebungsvariable `TONI_API_KEY`, sonst `KM_KEY`. */
   apiKey?: string;
-  /** Standard: `TONI_BASE_URL`, sonst https://ki-markt.com/v1 */
+  /** Standard: `TONI_BASE_URL`, sonst https://api.ki-markt.com/v1 */
   baseUrl?: string;
   /** Zeitgrenze je Anfrage in Millisekunden. Standard 120000. */
   timeout?: number;

@@ -175,7 +175,7 @@ const mp4 = await toni.videos.content(video.id);
 await toni.prices();   // sizes and prices, no key needed
 ```
 
-Already using the OpenAI library? Point it at `https://ki-markt.com/v1` with your Toni key.
+Already using the OpenAI library? Point it at `https://api.ki-markt.com/v1` with your Toni key.
 
 ## Terminal
 

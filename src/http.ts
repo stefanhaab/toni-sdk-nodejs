@@ -1,8 +1,8 @@
 import { apiError, ToniConnectionError, ToniError } from './errors.js';
 import type { RequestOptions, ToniOptions } from './types.js';
 
-export const VERSION = '0.1.0';
-export const DEFAULT_BASE_URL = 'https://ki-markt.com/v1';
+export const VERSION = '0.1.1';
+export const DEFAULT_BASE_URL = 'https://api.ki-markt.com/v1';
 
 const WIEDERHOLEN = new Set([429, 502, 503, 504]);
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // Erzeugt src/generated/* aus der OpenAPI-Datei der Toni API.
-//   node scripts/generate.mjs                 (lädt https://ki-markt.com/v1/platform/openapi.json)
+//   node scripts/generate.mjs                 (lädt https://api.ki-markt.com/v1/platform/openapi.json)
 //   node scripts/generate.mjs pfad/openapi.json
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const QUELLE = process.argv[2] || process.env.TONI_OPENAPI || 'https://ki-markt.com/v1/platform/openapi.json';
+const QUELLE = process.argv[2] || process.env.TONI_OPENAPI || 'https://api.ki-markt.com/v1/platform/openapi.json';
 const ZIEL = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'generated');
 
 const doc = /^https?:/.test(QUELLE)

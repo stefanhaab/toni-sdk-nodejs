@@ -1,6 +1,6 @@
 {
   "name": "toni-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Toni SDK for Node.js — hosted AI agent with 263 business functions (CRM, content, agents), OpenAI-compatible gateway, agent loop and CLI. A hosted alternative to Hermes Agent and OpenClaw.",
   "keywords": [
     "toni",
