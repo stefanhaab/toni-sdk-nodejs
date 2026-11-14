@@ -21,6 +21,56 @@ console.log(result.text);
 
 Get a key (`km_live_…`) in your account under "API" at [ki-markt.com](https://ki-markt.com). New accounts start with test credit.
 
+## What Toni can do
+
+Toni is the digital assistant of a company. You talk to him the way you would talk to a chief of staff: by voice, by chat, on the phone, in the car, on your wrist. He answers in your language, works in the name of your company, and asks before he does anything that cannot be undone.
+
+### He knows the company
+
+Most assistants start from zero in every conversation. Toni starts from context that the platform builds up once and keeps current:
+
+- **Interviews**: you tell him in a conversation what the company does, for whom, and what problems it solves. Everything else draws on this.
+- **Knowledge graph**: leads, appointments, offers, books, courses and interviews are linked, so "who was that customer with the terrace?" has an answer.
+- **Voice profile**: how you speak and write, so texts sound like you and not like a template.
+- **Business model**: what you earn money with and how offers are calculated.
+- **Audience**: emotional drivers of your customers (Limbic types), search terms with intent, and the story filter that defines how your story is told.
+- **Handbook, glossary, expertise, testimonials**: the working instructions and proof points of the company.
+
+### He does the work
+
+- **Customers and sales**: leads with their origin, contacts, appointments and tasks; offers and quotes drafted from the business model; invoice drafts; a look at open and overdue invoices.
+- **Customer support**: messages from e-mail, shop platforms, comments and messengers in one place, with prepared answers.
+- **Tasks, reminders and notes**: say "remind me on Friday to call Weber" or "that's done" and it is on the list or off it.
+- **Content**: landing pages, portals, digital business cards, QR codes with tracking, campaigns. Books, audiobooks, podcasts and courses come from the same source as everything else: your interviews, your voice, your offer.
+- **Editorial engine**: finds what people search for, proposes content ideas, and lets your pages grow once you approve.
+- **Conversations with your customers**: chat agents that answer on your website, speak in voice chat and pick up the phone.
+- **Goals**: you set the goal, Toni tracks the actual value, the forecast and what is being done about it.
+
+### AI co-workers
+
+You describe a job once, and an AI co-worker does it from then on: on a schedule, or when something happens, such as a new lead, an incoming mail or a paid invoice. Each one has steps, guardrails and a log of every run. Reading happens on its own. Anything that writes, sends or publishes waits for your yes unless you allowed it explicitly. You can try every change as a dry run first, where nothing is written.
+
+### Where you reach him
+
+| | |
+|---|---|
+| **Toni App** — on your phone. One tap to speak, record a voice note or chat. Decisions, tasks, today's appointments and files are one button each. Upload a file and tell Toni what to do with it. | <img src="docs/images/toni-app-start.webp" alt="Toni App on a phone: Toni with status ring, time and four round buttons for decisions, tasks, today and files" width="170"> <img src="docs/images/toni-app-chat.webp" alt="Toni App chat: an order for an offer, handed to an AI co-worker who reports the finished offer" width="170"> |
+| **Toni Watch** — a round device on a band or on the wall. Speak an idea the moment you have it; the ring shows whether Toni is listening, thinking or needs you. | <img src="docs/images/toni-watch-produkt.webp" alt="Toni Watch: round device with time, ring and Toni on the screen" width="170"> <img src="docs/images/toni-watch-unterwegs.webp" alt="A woman in a pedestrian zone speaks into the Toni Watch on its band" width="170"> |
+| **Toni Car** — on the screen of your car. Large buttons, large type, made for a glance: Toni asks a question, you answer by voice or with one tap. | <img src="docs/images/toni-car-start-dunkel.webp" alt="Toni Car on a car screen: Toni, time and large buttons" width="345"><br><img src="docs/images/toni-car-entscheidungen.webp" alt="Toni Car: a question from Toni waiting for a decision" width="345"> |
+| **Toni Desktop** — on your computer. The same Toni with room for longer chats; drag files in and he reads them. | <img src="docs/images/toni-desktop-start.webp" alt="Toni Desktop on a computer: Toni, time, decisions, tasks, today and files" width="345"><br><img src="docs/images/toni-desktop-chat.webp" alt="Toni Desktop chat: Toni hands an offer order to an AI co-worker" width="345"> |
+
+The screens show the real interfaces with invented sample data. Toni is also there in the web chat, on the phone and on an office dashboard for the wall.
+
+### What keeps it safe
+
+- **One company per key**: company and person always come from the key, never from the request.
+- **Four rights per key**: read, write, publish, delete. A key has none until you grant them.
+- **A human confirms** deleting and publishing. Neither the API nor the agent in this SDK lets a model confirm for itself.
+- **Privacy gate**: on by default for every key. Personal data in a text is replaced before a model sees it and put back in the answer.
+- **Pay per use**: prepaid credit, three model sizes, a monthly limit per key if you want one.
+
+With this SDK you use all of that from your own code.
+
 ## Toni, Hermes Agent, OpenClaw
 
 Hermes Agent and OpenClaw are open-source agents you host yourself. Toni is a hosted platform you call. Pick by what you want to own.

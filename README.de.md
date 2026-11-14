@@ -21,6 +21,56 @@ console.log(ergebnis.text);
 
 Den Schlüssel (`km_live_…`) erzeugst du im Konto unter „API“ auf [ki-markt.com](https://ki-markt.com). Neue Konten starten mit Testguthaben.
 
+## Was Toni kann
+
+Toni ist der digitale Assistent eines Unternehmens. Du sprichst mit ihm wie mit einem Stabschef: per Sprache, im Chat, am Telefon, im Auto, am Handgelenk. Er spricht dich mit Du und Vornamen an, arbeitet im Namen deines Unternehmens und fragt, bevor er etwas tut, das sich nicht zurücknehmen lässt.
+
+### Er kennt das Unternehmen
+
+Die meisten Assistenten fangen in jedem Gespräch bei null an. Toni fängt beim Kontext an, den die Plattform einmal aufbaut und aktuell hält:
+
+- **Interviews**: Du erzählst ihm in einem Gespräch, was dein Unternehmen tut, für wen, und welche Probleme es löst. Alles andere greift darauf zurück.
+- **Wissensgraph**: Leads, Termine, Angebote, Bücher, Kurse und Interviews hängen zusammen. So hat „Wer war noch mal der Kunde mit der Terrasse?“ eine Antwort.
+- **Sprachprofil**: wie du sprichst und schreibst, damit Texte nach dir klingen und nicht nach Vorlage.
+- **Geschäftsmodell**: womit du Geld verdienst und wie Angebote gerechnet werden.
+- **Zielgruppe**: die emotionalen Antriebe deiner Kunden (Limbic-Typen), Suchbegriffe mit ihrer Absicht und der Storyfilter, der festlegt, wie deine Geschichte erzählt wird.
+- **Handbuch, Glossar, Expertise, Kundenstimmen**: die Arbeitsanweisungen und Belege des Unternehmens.
+
+### Er erledigt die Arbeit
+
+- **Kunden und Vertrieb**: Leads mit ihrer Herkunft, Kontakte, Termine und Aufgaben; Angebote aus dem Geschäftsmodell; Rechnungsentwürfe; ein Blick auf offene und überfällige Rechnungen.
+- **Kundensupport**: Nachrichten aus E-Mail, Shop-Plattformen, Kommentaren und Messengern an einem Ort, mit vorbereiteten Antworten.
+- **Aufgaben, Erinnerungen und Notizen**: Sag „Erinner mich am Freitag an den Rückruf bei Weber“ oder „Ist erledigt“, und es steht auf der Liste oder ist abgehakt.
+- **Inhalte**: Landingpages, Portale, digitale Visitenkarten, QR-Codes mit Auswertung, Kampagnen. Bücher, Hörbücher, Podcasts und Kurse entstehen aus derselben Quelle wie alles andere: deinen Interviews, deiner Sprache, deinem Angebot.
+- **Redaktion**: erkennt, wonach gesucht wird, schlägt Themen vor und lässt deine Seiten wachsen, sobald du freigibst.
+- **Gespräche mit deinen Kunden**: Chat-Agenten, die auf deiner Webseite antworten, im Sprach-Chat sprechen und ans Telefon gehen.
+- **Ziele**: Du setzt das Ziel, Toni führt Istwert, Prognose und Umsetzung.
+
+### KI-Mitarbeiter
+
+Du beschreibst eine Aufgabe einmal, und ein KI-Mitarbeiter erledigt sie von da an: nach Zeitplan oder wenn etwas passiert, etwa ein neuer Lead, eine eingehende Mail oder eine bezahlte Rechnung. Jeder hat Schritte, Leitplanken und ein Protokoll jedes Laufs. Lesen darf er von selbst. Alles, was schreibt, versendet oder veröffentlicht, wartet auf dein Ja, außer du hast es ausdrücklich erlaubt. Jede Änderung kannst du erst als Probe laufen lassen, bei der nichts geschrieben wird.
+
+### Wo du ihn erreichst
+
+| | |
+|---|---|
+| **Toni App** — auf dem Handy. Ein Tipp zum Sprechen, für eine Sprachnachricht oder den Chat. Entscheidungen, Aufgaben, die Termine von heute und Dateien sind je ein Knopf. Lade eine Datei hoch und sag Toni, was er damit tun soll. | <img src="docs/images/toni-app-start.webp" alt="Toni App auf dem Handy: Toni mit Zustandsring, Uhrzeit und vier runde Knöpfe für Entscheidungen, Aufgaben, Heute und Dateien" width="170"> <img src="docs/images/toni-app-chat.webp" alt="Toni App Chat: Auftrag für ein Angebot, Toni gibt ihn an einen KI-Mitarbeiter weiter, der das fertige Angebot meldet" width="170"> |
+| **Toni Watch** — ein rundes Gerät am Band oder an der Wand. Sprich eine Idee hinein, sobald du sie hast; der Ring zeigt, ob Toni zuhört, nachdenkt oder dich braucht. | <img src="docs/images/toni-watch-produkt.webp" alt="Toni Watch: rundes Gerät mit Uhrzeit, Ring und Toni im Bild" width="170"> <img src="docs/images/toni-watch-unterwegs.webp" alt="Frau in der Fußgängerzone spricht in die Toni Watch am Band" width="170"> |
+| **Toni Car** — auf dem Bildschirm im Auto. Große Knöpfe, große Schrift, gemacht für einen Blick: Toni stellt eine Frage, du antwortest per Stimme oder mit einem Tipp. | <img src="docs/images/toni-car-start-dunkel.webp" alt="Toni Car auf dem Bildschirm im Auto: Toni, Uhrzeit und große Knöpfe" width="345"><br><img src="docs/images/toni-car-entscheidungen.webp" alt="Toni Car: eine Rückfrage von Toni, die auf eine Entscheidung wartet" width="345"> |
+| **Toni Desktop** — auf dem Rechner. Derselbe Toni mit Platz für längere Chats; zieh Dateien hinein, und er liest sie. | <img src="docs/images/toni-desktop-start.webp" alt="Toni Desktop auf dem Rechner: Toni, Uhrzeit, Entscheidungen, Aufgaben, Heute und Dateien" width="345"><br><img src="docs/images/toni-desktop-chat.webp" alt="Toni Desktop Chat: Toni gibt den Angebotsauftrag an einen KI-Mitarbeiter weiter" width="345"> |
+
+Die Bildschirme zeigen die echten Oberflächen mit erfundenen Beispieldaten. Toni gibt es außerdem im Web-Chat, am Telefon und als Büro-Dashboard für die Wand.
+
+### Was es sicher macht
+
+- **Ein Unternehmen je Schlüssel**: Unternehmen und Person kommen immer aus dem Schlüssel, nie aus der Anfrage.
+- **Vier Rechte je Schlüssel**: lesen, schreiben, veröffentlichen, löschen. Ein Schlüssel hat keins, bis du es vergibst.
+- **Ein Mensch bestätigt** Löschen und Veröffentlichen. Weder die API noch der Agent in diesem SDK lassen zu, dass ein Modell sich selbst bestätigt.
+- **Datenschleuse**: für jeden Schlüssel von Haus aus an. Personenbezogene Daten in einem Text werden ersetzt, bevor ein Modell sie sieht, und in der Antwort wieder eingesetzt.
+- **Abrechnung nach Nutzung**: Guthaben im Voraus, drei Modellgrößen, auf Wunsch ein Monatslimit je Schlüssel.
+
+Mit diesem SDK nutzt du all das aus deinem eigenen Code.
+
 ## Toni, Hermes Agent, OpenClaw
 
 Hermes Agent und OpenClaw sind quelloffene Agenten, die du selbst betreibst. Toni ist eine gehostete Plattform, die du aufrufst.
