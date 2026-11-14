@@ -51,6 +51,7 @@
   "scripts": {
     "generate": "node scripts/generate.mjs",
     "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
     "test": "npm run build && node --test test/sdk.test.mjs",
     "prepublishOnly": "npm test"
   },
