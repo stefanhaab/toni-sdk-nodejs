@@ -1,10 +1,12 @@
 # Toni SDK for Node.js
 
-**An AI agent for your business, without running one.** Toni is a hosted agent with 260+ business functions built in: CRM, offers, invoices, books, podcasts, landing pages, knowledge graph, and your own AI co-workers. This SDK gives you the agent loop, every function as a typed method, an OpenAI-compatible model gateway and a terminal client.
+[![npm](https://img.shields.io/npm/v/toni-sdk?style=flat-square&label=npm)](https://www.npmjs.com/package/toni-sdk) [![Node.js](https://img.shields.io/node/v/toni-sdk?style=flat-square)](https://nodejs.org) [![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE) [![API reference](https://img.shields.io/badge/API-reference-0b7285?style=flat-square)](https://ki-markt.com/api-referenz)
 
-If you looked at [Hermes Agent](https://github.com/NousResearch/hermes-agent) or [OpenClaw](https://github.com/openclaw/openclaw) and want the agent but not the server, the model keys and the skill wiring, this is the hosted alternative.
+**The AI agent for the self-employed and for business owners.** Toni already knows how a small company works: customers and enquiries, offers, invoices, content, knowledge, and AI co-workers that take over recurring jobs. 260+ business functions are built in. There is no server to run and no model key to manage. This SDK gives you the agent loop, every function as a typed method, an OpenAI-compatible model gateway and a terminal client.
 
-[Deutsche Fassung](README.de.md) · [PHP](https://github.com/stefanhaab/toni-sdk-php) · [API reference](https://ki-markt.com/api-referenz) · [ki-markt.com](https://ki-markt.com)
+Use Toni on his own, as the hosted alternative to [Hermes Agent](https://github.com/NousResearch/hermes-agent) and [OpenClaw](https://github.com/openclaw/openclaw). Or keep your OpenClaw or Hermes setup and [plug Toni in](#use-toni-inside-openclaw-or-hermes-agent) as the part that knows your business.
+
+[Deutsche Fassung](README.de.md) · [PHP](https://github.com/stefanhaab/toni-sdk-php) · [Python](https://github.com/stefanhaab/toni-sdk-python) · [API reference](https://ki-markt.com/api-referenz) · [ki-markt.com](https://ki-markt.com)
 
 ```bash
 npm install toni-sdk
@@ -84,10 +86,59 @@ Hermes Agent and OpenClaw are open-source agents you host yourself. Toni is a ho
 | Business data | CRM, offers, invoices, content, knowledge graph included | You connect it | You connect it |
 | Destructive actions | Blocked unless a human confirms | Up to your setup | Up to your setup |
 | Personal data | Privacy gate replaces it before a model sees it | Up to your setup | Up to your setup |
-| Chat apps (Telegram, WhatsApp …) | Not part of this SDK | Built in | Built in |
+| Where you talk to it | Toni App, Watch, Car, Desktop, phone, web chat | Telegram, Discord, Slack, WhatsApp, terminal | WhatsApp, Telegram, Slack and 20+ more, native apps |
 | Source | SDK is MIT, platform is hosted | MIT, fully open | MIT, fully open |
 
-Choose Hermes Agent or OpenClaw if you want everything on your own hardware and a personal assistant in your chat apps. Choose Toni if you want an agent that already knows how to work with a company's data, and you'd rather not operate it.
+Choose Hermes Agent or OpenClaw if you want everything on your own hardware and a personal assistant in your chat apps. Choose Toni if you are self-employed or run a company and want an agent that already works with your customers, offers and invoices, without operating it. You don't have to choose: the next section shows how to use both.
+
+## Use Toni inside OpenClaw or Hermes Agent
+
+Toni has a hosted MCP endpoint. Your OpenClaw or Hermes agent keeps its chats, its memory and its skills, and gets Toni as the colleague who knows the company. There is nothing to install.
+
+- **Address:** `https://app.landingpage.tools/mcp`
+- **Key:** create a connector key (`lpt_…`) in the downloads area of your account, under "Connect an AI assistant". It is a different key than the API key of this SDK.
+- **Tools:** `toni` hands a task to Toni, who works with the company's context and remembers the conversation. `suchen` searches the company's knowledge. `katalog` and `ausfuehren` reach the platform functions directly. Rights and the confirmation for deleting and publishing apply here as well.
+
+Hermes Agent, in `~/.hermes/config.yaml`:
+
+```yaml
+mcp_servers:
+  toni:
+    url: "https://app.landingpage.tools/mcp"
+    headers:
+      Authorization: "Bearer lpt_…"
+```
+
+OpenClaw, in the `mcp.servers` block of your config (check it with `openclaw mcp probe`):
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "toni": {
+        "url": "https://app.landingpage.tools/mcp",
+        "transport": "streamable-http",
+        "headers": { "Authorization": "Bearer lpt_…" }
+      }
+    }
+  }
+}
+```
+
+The same endpoint works in Claude, ChatGPT and any other MCP host.
+
+## Coming from OpenClaw or Hermes Agent
+
+| What you know | In Toni |
+|---|---|
+| Skills | 260+ built-in business functions; add your own with `tools` |
+| Memory, `SOUL.md`, `USER.md` | Interviews, voice profile, knowledge graph and notes, kept on the platform |
+| Cron and scheduled automations | AI co-workers that run on a schedule or when something happens |
+| Subagents | AI co-workers under Toni, each with steps, guardrails and a run log |
+| Command approval | Four rights per key, and a human confirms deleting and publishing |
+| Model providers and keys | Three sizes included, prepaid, pay per use |
+| Gateway and chat channels | Toni App, Watch, Car, Desktop, phone and web chat |
+| A daemon on your machine | Nothing to run |
 
 ## The agent
 
