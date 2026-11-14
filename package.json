@@ -1,0 +1,61 @@
+{
+  "name": "toni-sdk",
+  "version": "0.1.0",
+  "description": "Toni SDK for Node.js — hosted AI agent with 263 business functions (CRM, content, agents), OpenAI-compatible gateway, agent loop and CLI. A hosted alternative to Hermes Agent and OpenClaw.",
+  "keywords": [
+    "toni",
+    "ki-markt",
+    "ai-agent",
+    "agent",
+    "agent-sdk",
+    "llm",
+    "openai-compatible",
+    "hermes-agent-alternative",
+    "openclaw-alternative",
+    "crm",
+    "automation",
+    "ki",
+    "ki-agent"
+  ],
+  "homepage": "https://ki-markt.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanhaab/toni-sdk-nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stefanhaab/toni-sdk-nodejs/issues"
+  },
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "toni": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.de.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/sdk.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
