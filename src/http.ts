@@ -41,6 +41,12 @@ export class Http {
     this.fetchFn = f.bind(globalThis);
   }
 
+  /** Der Schlüssel, oder ein klarer Fehler, wenn er fehlt. */
+  key(): string {
+    if (!this.apiKey) throw new ToniError('Der Schlüssel fehlt. Übergib `apiKey` oder setze die Umgebungsvariable TONI_API_KEY (km_live_…).');
+    return this.apiKey;
+  }
+
   async request<T = unknown>(r: HttpRequest): Promise<T> {
     if (!r.anonymous && !this.apiKey) {
       throw new ToniError('Der Schlüssel fehlt. Übergib `apiKey` oder setze die Umgebungsvariable TONI_API_KEY (km_live_…).');

@@ -160,9 +160,18 @@ new Toni({ apiKey, baseUrl, timeout: 120_000, maxRetries: 2, fetch, headers });
 
 Environment: `TONI_API_KEY` (or `KM_KEY`), `TONI_BASE_URL`. Node.js 18 or newer, no dependencies.
 
-## Not in this SDK yet
+## Realtime voice
 
-Realtime voice (`/v1/realtime`, WebSocket) has no wrapper yet; see the [API reference](https://ki-markt.com/api-referenz).
+```ts
+const call = await toni.realtime.connect({ instructions: 'You answer the phone for a workshop.', voice: 'marin' });
+call.sendAudio(pcmChunk);                 // 24 kHz PCM by default
+for await (const event of call) {
+  // audio and transcripts arrive as events; see the API reference for the types
+}
+call.close();
+```
+
+Billed in ten-second steps. Needs a WebSocket: built in from Node.js 22, before that pass the class from the `ws` package as `WebSocket`. Toni only speaks while audio comes in, so send silence during pauses.
 
 ## Development
 

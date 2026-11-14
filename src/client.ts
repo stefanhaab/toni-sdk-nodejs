@@ -3,6 +3,7 @@ import { ToniError } from './errors.js';
 import { createAreas, type Areas } from './generated/areas.js';
 import { CATALOG } from './generated/catalog.js';
 import { Http, sse } from './http.js';
+import { Realtime } from './realtime.js';
 import type {
   CallOptions, CatalogArea, ChatChunk, ChatCompletion, ChatModel, ChatParams, EmbeddingParams, EmbeddingResponse,
   FileInput, FunctionResult, ImageParams, ImageResponse, ListResponse, Model, PlatformCaller, PlatformEnvelope,
@@ -102,6 +103,8 @@ export class Toni {
     wait(id: string, options?: { interval?: number; timeout?: number; signal?: AbortSignal }): Promise<Video>;
   };
   readonly models: { list(options?: RequestOptions): Promise<ListResponse<Model>> };
+  /** Echtzeit-Sprache über WebSocket. */
+  readonly realtime: Realtime;
 
   constructor(options: ToniOptions = {}) {
     const http = (this.http = new Http(options));
@@ -142,6 +145,7 @@ export class Toni {
       },
     };
     this.models = { list: (o) => http.request({ path: '/models', ...o }) };
+    this.realtime = new Realtime(http.baseUrl, () => http.key());
     Object.assign(this, createAreas(this.platform));
   }
 

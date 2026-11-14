@@ -148,9 +148,18 @@ new Toni({ apiKey, baseUrl, timeout: 120_000, maxRetries: 2, fetch, headers });
 
 Umgebung: `TONI_API_KEY` (oder `KM_KEY`), `TONI_BASE_URL`. Node.js 18 oder neuer, keine Abhängigkeiten.
 
-## Noch nicht im SDK
+## Echtzeit-Sprache
 
-Echtzeit-Sprache (`/v1/realtime`, WebSocket) hat noch keine eigene Hülle; siehe [API-Referenz](https://ki-markt.com/api-referenz).
+```ts
+const gespraech = await toni.realtime.connect({ instructions: 'Du nimmst das Telefon einer Werkstatt ab.', voice: 'marin' });
+gespraech.sendAudio(pcmStueck);           // Standard: PCM mit 24 kHz
+for await (const ereignis of gespraech) {
+  // Ton und Mitschrift kommen als Ereignisse; die Arten stehen in der API-Referenz
+}
+gespraech.close();
+```
+
+Abgerechnet wird im Takt von zehn Sekunden. Braucht einen WebSocket: ab Node.js 22 eingebaut, davor die Klasse aus dem Paket `ws` als `WebSocket` übergeben. Toni spricht nur, solange Ton hereinkommt; in Pausen also Stille senden.
 
 ## Entwicklung
 

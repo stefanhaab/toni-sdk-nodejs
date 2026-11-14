@@ -54,7 +54,7 @@ test('Katalog: jede Funktion ist eine Methode, Namen passen in ein Werkzeug', ()
     }
   }
   assert.ok(n >= 260, `${n} Funktionen`);
-  for (const fest of ['chat', 'platform', 'embeddings', 'audio', 'images', 'videos', 'models', 'agent', 'ask', 'prices']) {
+  for (const fest of ['realtime', 'chat', 'platform', 'embeddings', 'audio', 'images', 'videos', 'models', 'agent', 'ask', 'prices']) {
     assert.ok(!CATALOG.some((a) => a.name === fest), `Bereich ${fest} überschreibt den Client`);
   }
 });
@@ -226,4 +226,42 @@ test('Agent ohne Bereiche: sucht im Katalog, eigene Werkzeuge, Rundengrenze, For
   assert.equal(anfragen.at(-1).body.tools, undefined, 'die letzte Runde bekommt keine Werkzeuge mehr');
 
   assert.throws(() => toni.agent({ areas: ['gibtsnicht'] }), ToniError);
+});
+
+test('Echtzeit-Sprache: Adresse, Schlüssel als Unterprotokoll, Start, Ereignisse', async () => {
+  const toni = neu();
+  const gesendet = [];
+  let ws;
+  class FalscherSocket extends EventTarget {
+    constructor(url, protokolle) { super(); ws = this; this.url = url; this.protokolle = protokolle; queueMicrotask(() => this.dispatchEvent(new Event('open'))); }
+    send(t) { gesendet.push(JSON.parse(t)); }
+    close() { this.dispatchEvent(new Event('close')); }
+    kommt(o) { const e = new Event('message'); e.data = JSON.stringify(o); this.dispatchEvent(e); }
+  }
+  const s = await toni.realtime.connect({ WebSocket: FalscherSocket, instructions: 'Kurz.', format: { type: 'audio/pcmu', rate: 8000 }, tools: [{ name: 'wetter' }] });
+  assert.equal(ws.url, basis.replace('http', 'ws') + '/realtime?model=toni-sprache');
+  assert.deepEqual(ws.protokolle, ['realtime', 'km-key.km_live_test']);
+  assert.equal(gesendet[0].type, 'session.start');
+  assert.deepEqual(gesendet[0].session.audio, { format: { type: 'audio/pcmu', rate: 8000 }, output: { voice: 'marin' } });
+  assert.equal(gesendet[0].session.delegation.responses.tools[0].name, 'wetter');
+  s.sendAudio(new Uint8Array([1, 2, 3]));
+  s.toolOutput('call_1', { ok: true });
+  s.respond();
+  assert.deepEqual(gesendet.slice(1), [
+    { type: 'session.input_audio.append', audio: 'AQID' },
+    { type: 'response.item.create', item: { type: 'function_call_output', call_id: 'call_1', output: '{"ok":true}' } },
+    { type: 'response.create' },
+  ]);
+  const fehler = [];
+  s.on('error', (e) => fehler.push(e.code));
+  ws.kommt({ type: 'session.started' });
+  ws.kommt({ type: 'error', error: { code: 'insufficient_quota', message: 'Leer.' } });
+  const gesehen = [];
+  setTimeout(() => s.close(), 5);
+  for await (const e of s) gesehen.push(e.type);
+  assert.deepEqual(gesehen, ['session.started', 'error']);
+  assert.deepEqual(fehler, ['insufficient_quota']);
+  assert.equal(s.closed, true);
+  assert.equal(gesendet.at(-1).type, 'session.close');
+  assert.throws(() => s.respond(), ToniError);
 });

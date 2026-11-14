@@ -1,5 +1,7 @@
 export { Toni } from './client.js';
 export { Agent } from './agent.js';
+export { Realtime, RealtimeSession } from './realtime.js';
+export type { RealtimeEvent, RealtimeOptions } from './realtime.js';
 export type { AgentOptions, AgentResult, AgentStep, CustomTool, PendingCall, RunOptions } from './agent.js';
 export {
   ToniError, ToniApiError, ToniConnectionError, AuthenticationError, InsufficientCreditError,
