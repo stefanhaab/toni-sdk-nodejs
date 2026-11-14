@@ -4,7 +4,7 @@
 
 If you looked at [Hermes Agent](https://github.com/NousResearch/hermes-agent) or [OpenClaw](https://github.com/openclaw/openclaw) and want the agent but not the server, the model keys and the skill wiring, this is the hosted alternative.
 
-[Deutsche Fassung](README.de.md) · [API reference](https://ki-markt.com/api-referenz) · [ki-markt.com](https://ki-markt.com)
+[Deutsche Fassung](README.de.md) · [PHP](https://github.com/stefanhaab/toni-sdk-php) · [API reference](https://ki-markt.com/api-referenz) · [ki-markt.com](https://ki-markt.com)
 
 ```bash
 npm install toni-sdk

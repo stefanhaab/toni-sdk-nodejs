@@ -4,7 +4,7 @@
 
 Wer sich [Hermes Agent](https://github.com/NousResearch/hermes-agent) oder [OpenClaw](https://github.com/openclaw/openclaw) angesehen hat und den Agenten will, aber nicht den Server, die Modell-Schlüssel und das Verdrahten der Werkzeuge: das hier ist die gehostete Alternative.
 
-[English](README.md) · [API-Referenz](https://ki-markt.com/api-referenz) · [ki-markt.com](https://ki-markt.com)
+[English](README.md) · [PHP](https://github.com/stefanhaab/toni-sdk-php) · [API-Referenz](https://ki-markt.com/api-referenz) · [ki-markt.com](https://ki-markt.com)
 
 ```bash
 npm install toni-sdk
