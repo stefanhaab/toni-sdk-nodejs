@@ -125,7 +125,7 @@ OpenClaw, in the `mcp.servers` block of your config (check it with `openclaw mcp
 }
 ```
 
-The same endpoint works in Claude, ChatGPT and any other MCP host.
+The same endpoint works in Claude, ChatGPT and any other MCP host. A ready-made skill that tells your agent when to hand a task to Toni is in [`skills/toni`](https://github.com/stefanhaab/toni-sdk-nodejs/tree/main/skills/toni): copy the folder into the skills directory of OpenClaw or Hermes.
 
 ## Coming from OpenClaw or Hermes Agent
 
@@ -231,11 +231,14 @@ Already using the OpenAI library? Point it at `https://api.ki-markt.com/v1` with
 ## Terminal
 
 ```bash
-export TONI_API_KEY=km_live_…
+npx toni login                           # store your key once (or set TONI_API_KEY)
 npx toni "Which invoices are overdue?"
 npx toni --bereiche crm --schreiben      # conversation, may create and change
 npx toni funktionen lead                 # browse the catalog
+npx toni verbinden hermes               # config to plug Toni into Hermes Agent or OpenClaw
 ```
+
+`toni login` keeps the key in `~/.config/toni/config.json`, readable only by you. `toni logout` removes it.
 
 ## Errors
 
@@ -282,4 +285,4 @@ npm run generate     # rebuild src/generated from the live OpenAPI document
 npm test
 ```
 
-MIT
+[Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · MIT

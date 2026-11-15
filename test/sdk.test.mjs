@@ -265,3 +265,43 @@ test('Echtzeit-Sprache: Adresse, Schlüssel als Unterprotokoll, Start, Ereigniss
   assert.equal(gesendet.at(-1).type, 'session.close');
   assert.throws(() => s.respond(), ToniError);
 });
+
+test('Terminal: login speichert den Schlüssel, logout löscht ihn, verbinden zeigt den MCP-Zugang', async () => {
+  const { execFile } = await import('node:child_process');
+  const { mkdtempSync, readFileSync, statSync, existsSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const ordner = mkdtempSync(join(tmpdir(), 'toni-'));
+  const datei = join(ordner, 'toni', 'config.json');
+  const umgebung = { PATH: process.env.PATH, XDG_CONFIG_HOME: ordner, TONI_BASE_URL: basis };
+  const toni = (...a) => new Promise((fertig) => {
+    const kind = execFile(process.execPath, ['dist/cli.js', ...a], { env: umgebung }, (fehler, out, err) => fertig({ code: fehler ? fehler.code : 0, out, err }));
+    kind.stdin.end();
+  });
+
+  anfragen.length = 0; antworten = [{ status: 401, body: { error: { message: 'Falsch.', type: 'authentication_error', param: null, code: 'invalid_api_key' } } }];
+  const falsch = await toni('login', 'km_live_falsch');
+  assert.equal(falsch.code, 1);
+  assert.match(falsch.err, /nicht angenommen/);
+  assert.equal(existsSync(datei), false);
+
+  antworten = [{ body: { object: 'list', data: [] } }];
+  const gut = await toni('login', 'km_live_gespeichert');
+  assert.equal(gut.code, 0);
+  assert.equal(JSON.parse(readFileSync(datei, 'utf8')).api_key, 'km_live_gespeichert');
+  assert.equal(statSync(datei).mode & 0o777, 0o600);
+
+  anfragen.length = 0;
+  const antwort = await toni('--bereiche', 'crm', 'Hallo');
+  assert.equal(antwort.out.trim(), 'Hallo.');
+  assert.equal(anfragen[0].headers.authorization, 'Bearer km_live_gespeichert');
+
+  assert.match((await toni('logout')).out, /gelöscht/);
+  assert.equal(existsSync(datei), false);
+  assert.match((await toni('Hallo')).err, /toni login/);
+
+  const hermes = (await toni('verbinden', 'hermes')).out;
+  assert.match(hermes, /https:\/\/app\.landingpage\.tools\/mcp/);
+  assert.match(hermes, /mcp_servers/);
+  assert.match((await toni('verbinden', 'openclaw')).out, /streamable-http/);
+});

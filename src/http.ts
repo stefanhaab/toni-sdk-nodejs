@@ -1,7 +1,7 @@
 import { apiError, ToniConnectionError, ToniError } from './errors.js';
 import type { RequestOptions, ToniOptions } from './types.js';
 
-export const VERSION = '0.1.1';
+export const VERSION = '0.1.2';
 export const DEFAULT_BASE_URL = 'https://api.ki-markt.com/v1';
 
 const WIEDERHOLEN = new Set([429, 502, 503, 504]);
@@ -43,13 +43,13 @@ export class Http {
 
   /** Der Schlüssel, oder ein klarer Fehler, wenn er fehlt. */
   key(): string {
-    if (!this.apiKey) throw new ToniError('Der Schlüssel fehlt. Übergib `apiKey` oder setze die Umgebungsvariable TONI_API_KEY (km_live_…).');
+    if (!this.apiKey) throw new ToniError('Der Schlüssel fehlt. Übergib `apiKey`, setze die Umgebungsvariable TONI_API_KEY (km_live_…) oder nutze im Terminal `toni login`.');
     return this.apiKey;
   }
 
   async request<T = unknown>(r: HttpRequest): Promise<T> {
     if (!r.anonymous && !this.apiKey) {
-      throw new ToniError('Der Schlüssel fehlt. Übergib `apiKey` oder setze die Umgebungsvariable TONI_API_KEY (km_live_…).');
+      throw new ToniError('Der Schlüssel fehlt. Übergib `apiKey`, setze die Umgebungsvariable TONI_API_KEY (km_live_…) oder nutze im Terminal `toni login`.');
     }
     const headers: Record<string, string> = {
       Accept: 'application/json',

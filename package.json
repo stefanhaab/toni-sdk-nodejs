@@ -1,6 +1,6 @@
 {
   "name": "toni-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Toni SDK for Node.js: the AI agent for the self-employed and business owners. 260+ business functions built in (CRM, offers, invoices, content, AI co-workers). Works on its own or inside OpenClaw and Hermes Agent.",
   "keywords": [
     "toni",
@@ -42,7 +42,9 @@
     "dist",
     "README.md",
     "README.de.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md",
+    "skills"
   ],
   "sideEffects": false,
   "engines": {

@@ -125,7 +125,7 @@ OpenClaw, im Block `mcp.servers` deiner Konfiguration (prüfen mit `openclaw mcp
 }
 ```
 
-Derselbe Zugang funktioniert in Claude, ChatGPT und jedem anderen MCP-Host.
+Derselbe Zugang funktioniert in Claude, ChatGPT und jedem anderen MCP-Host. Einen fertigen Skill, der deinem Agenten sagt, wann er eine Aufgabe an Toni gibt, findest du in [`skills/toni`](https://github.com/stefanhaab/toni-sdk-nodejs/tree/main/skills/toni): den Ordner in das Skills-Verzeichnis von OpenClaw oder Hermes kopieren.
 
 ## Umstieg von OpenClaw oder Hermes Agent
 
@@ -231,11 +231,14 @@ Du nutzt schon die OpenAI-Bibliothek? Stell sie auf `https://api.ki-markt.com/v1
 ## Terminal
 
 ```bash
-export TONI_API_KEY=km_live_…
+npx toni login                           # Schlüssel einmal speichern (oder TONI_API_KEY setzen)
 npx toni "Welche Rechnungen sind überfällig?"
 npx toni --bereiche crm --schreiben      # Gespräch, darf anlegen und ändern
 npx toni funktionen lead                 # im Katalog blättern
+npx toni verbinden hermes               # Konfiguration, um Toni in Hermes Agent oder OpenClaw einzubinden
 ```
+
+`toni login` legt den Schlüssel in `~/.config/toni/config.json` ab, lesbar nur für dich. `toni logout` löscht ihn.
 
 ## Fehler
 
@@ -270,4 +273,4 @@ npm run generate     # src/generated aus dem OpenAPI-Dokument neu erzeugen
 npm test
 ```
 
-MIT
+[Änderungen](CHANGELOG.md) · [Mitmachen](CONTRIBUTING.md) · [Sicherheit](SECURITY.md) · MIT
